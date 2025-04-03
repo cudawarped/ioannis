@@ -416,35 +416,63 @@
         }
         
         @media (max-width: 768px) {
-            .header-content {
-                position: relative;
-            }
-            
-            .mobile-nav-toggle {
-                display: block;
-            }
-            
-            .header-social {
-                display: none;
-            }
-            
-            nav {
-                position: absolute;
-                top: 100%;
-                right: 0;
-                background-color: var(--dark-color);
-                width: 80%;
-                max-width: 300px;
-                padding: 20px;
-                border-radius: 0 0 5px 5px;
-                box-shadow: 0 10px 15px rgba(0,0,0,0.1);
-                transform: translateY(-150%);
-                transition: transform 0.3s;
-            }
-            
-            nav.active {
-                transform: translateY(0);
-            }
+        
+     .header-content {
+        display: flex;
+        flex-wrap: nowrap; /* Prevent wrapping */
+        align-items: center;
+    }
+
+    /* Logo - stays left */
+    .logo {
+        flex: 1; /* Takes available space */
+        min-width: 0; /* Allows shrinking */
+    }
+
+    /* Social icons - middle */
+    .header-social {
+        display: flex;
+        gap: 10px;
+        margin: 0 15px;
+    }
+
+    /* Right-aligned elements container */
+    .header-right {
+        display: flex;
+        align-items: center;
+    }
+
+    /* Language toggle */
+    .language-toggle {
+        margin-right: 10px;
+    }
+
+    /* Mobile menu button - stays visible */
+    .mobile-nav-toggle {
+        display: block !important; /* Force show */
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.5rem;
+        cursor: pointer;
+        padding: 5px;
+    }
+
+    /* Navigation menu - hidden by default */
+    nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--dark-color);
+        padding: 20px;
+        z-index: 100;
+    }
+
+    nav.active {
+        display: block;
+    }
             
             nav ul {
                 flex-direction: column;
@@ -514,7 +542,9 @@
                 </div>
                 <div style="display: flex; align-items: center;">
 
-
+                    <button class="mobile-nav-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
                     <nav>
                         <ul>
                             <li><a href="#home" data-en="Home" data-el="Αρχική">Αρχική</a></li>
@@ -530,9 +560,7 @@
                         <a href="https://www.instagram.com/gentshair.ioannis" target="_blank"><i class="fab fa-instagram"></i></a>
                     </div>
                     <button class="language-toggle" id="languageToggle">EN</button>
-                    <button class="mobile-nav-toggle">
-                        <i class="fas fa-bars"></i>
-                    </button>
+
                 </div>
             </div>
         </div>
