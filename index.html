@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gents Hair by Ioannis Vasilikos</title>
+    <link rel="icon" href="https://scontent.fskg4-1.fna.fbcdn.net/v/t39.30808-6/299375773_369446075387217_6658963691959186152_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=QWMse66-nWUQ7kNvgESjo1r&_nc_oc=AdlDwmI9k8KpR_axFUMBKbwk4MxIdABOw1jwJvFGIqVvlM3xE5MCOCCQfwHPbdOPajQ&_nc_zt=23&_nc_ht=scontent.fskg4-1.fna&_nc_gid=DI3LVB26scISd_ndCaWr9Q&oh=00_AYGAeZCCsvgY0O5PE9QEvvFOvSHMIsjG1MHKOM2ROUCaDw&oe=67F42445" type="image/jpg">
+    <style>
+        :root {
+            --primary-color: #222;
+            --secondary-color: #b8860b;
+            --light-color: #f5f5f5;
+            --dark-color: #111;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+       
+        
+        .logo img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo-text-top {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 0px; /* Changed from 2px to 0px */
+            line-height: 1.2; /* Added this to reduce space */
+        }
+        
+        .logo-text-bottom {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            min-width: 80px; /* Set a minimum width that accommodates both languages */
+            text-align: center; /* Center the text within the fixed width */
+            margin-left: 15px; /* Adjust spacing as needed */
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .mobile-nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .header-social {
+            display: flex;
+            margin-left: 20px;
+        }
+        
+        .header-social a {
+            color: white;
+            font-size: 1.5rem;
+            margin-left: 15px;
+            transition: color 0.3s;
+        }
+        
+        .header-social a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .hero {
+            height: 100vh;
+            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .hero-content {
+            width: 100%;
+            padding: 0 20px;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .hero-logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #d4a017;
+            transform: translateY(-2px);
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--dark-color);
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: #777;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            margin: 15px auto 0;
+        }
+        
+        .services {
+            background-color: #f9f9f9;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: white;
+            padding: 30px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .service-card i {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+        
+        .service-card h3 {
+            margin-bottom: 15px;
+        }
+        
+        .service-card p {
+            color: #777;
+        }
+        
+        .service-price {
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin-top: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .gallery {
+            background-color: white;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .gallery-item {
+            overflow: hidden;
+            height: 250px;
+            border-radius: 10px;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .hours {
+            background-color: var(--dark-color);
+            color: white;
+        }
+        
+        .hours-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 30px;
+        }
+        
+        .hours-table {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .hours-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .hours-table table th, .hours-table table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #444;
+        }
+        
+        .hours-table table th {
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+        
+       .hours-image {
+           flex: 1;
+           min-width: 300px;
+           max-width: 450px;
+           height: 300px;
+           overflow: hidden;
+           border-radius: 10px;
+           display: flex;
+           align-items: center; /* Center vertically */
+           justify-content: center; /* Center horizontally */
+       }
+        
+        .hours-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .contact {
+            background-color: #f9f9f9;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .contact-info {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .contact-info h3 {
+            color: var(--dark-color);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .contact-details p {
+            display: flex;
+            margin-bottom: 15px;
+            align-items: center;
+        }
+        
+        .contact-details i {
+            color: var(--secondary-color);
+            margin-right: 10px;
+            font-size: 1.2rem;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .social-links {
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            margin-right: 15px;
+            color: var(--dark-color);
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .map-container {
+            height: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        footer p {
+            margin-bottom: 10px;
+        }
+        
+        .language-toggle {
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            margin-left: 20px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .language-toggle:hover {
+            background: #d4a017;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                position: relative;
+            }
+            
+            .mobile-nav-toggle {
+                display: block;
+            }
+            
+            .header-social {
+                display: none;
+            }
+            
+            nav {
+                position: absolute;
+                top: 100%;
+                right: 0;
+                background-color: var(--dark-color);
+                width: 80%;
+                max-width: 300px;
+                padding: 20px;
+                border-radius: 0 0 5px 5px;
+                box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+                transform: translateY(-150%);
+                transition: transform 0.3s;
+            }
+            
+            nav.active {
+                transform: translateY(0);
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                min-width: auto; /* Allow natural width on mobile */
+                text-align: left;
+                margin: 10px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .service-card, .gallery-item, .contact-info {
+                margin-bottom: 20px;
+            }
+            
+            .logo-circle {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .logo-circle::before {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .logo img {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .logo-text-bottom {
+                font-size: 1.4rem;
+            }
+            
+            .hero-logo {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .language-toggle {
+                padding: 5px 10px;
+                font-size: 0.8rem;
+                margin-left: 10px;
+            }
+        }
+    </style>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-circle">
+                        <img src="https://scontent.fskg4-1.fna.fbcdn.net/v/t39.30808-6/299375773_369446075387217_6658963691959186152_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=QWMse66-nWUQ7kNvgESjo1r&_nc_oc=AdlDwmI9k8KpR_axFUMBKbwk4MxIdABOw1jwJvFGIqVvlM3xE5MCOCCQfwHPbdOPajQ&_nc_zt=23&_nc_ht=scontent.fskg4-1.fna&_nc_gid=DI3LVB26scISd_ndCaWr9Q&oh=00_AYGAeZCCsvgY0O5PE9QEvvFOvSHMIsjG1MHKOM2ROUCaDw&oe=67F42445" alt="Gents Hair Logo">
+                    </div>
+                    <div class="logo-text">
+                        <span class="logo-text-top">Gents Hair by</span>
+                        <span class="logo-text-bottom">Ioannis Vasilikos</span>
+                    </div>
+                </div>
+                <div style="display: flex; align-items: center;">
+
+
+                    <nav>
+                        <ul>
+                            <li><a href="#home" data-en="Home" data-el="Αρχική">Αρχική</a></li>
+                            <li><a href="#services" data-en="Services" data-el="Υπηρεσίες">Υπηρεσίες</a></li>
+                            <li><a href="#gallery" data-en="Gallery" data-el="Gallery">Gallery</a></li>
+                            <li><a href="#hours" data-en="Hours" data-el="Ωράριο">Ωράριο</a></li>
+                            <li><a href="#contact" data-en="Contact" data-el="Επικοινωνία">Επικοινωνία</a></li>
+                        </ul>
+                    </nav>
+                    
+                     <div class="header-social">
+                        <a href="https://www.facebook.com/gentshair.ioannis/" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/gentshair.ioannis" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                    <button class="language-toggle" id="languageToggle">EN</button>
+                    <button class="mobile-nav-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>
+                <span data-en="Gents Hair by Ioannis Vasilikos" data-el="Gents Hair by Ioannis Vasilikos">Gents Hair by Ioannis Vasilikos</span>
+            </h1>
+            <p data-en="Premium men's grooming and style in Volos" data-el="Εξαιρετική περιποίηση και στυλ για άνδρες στο Βόλο">Εξαιρετική περιποίηση και στυλ για άνδρες στο Βόλο</p>
+            <a href="tel:2421057655" class="btn" data-en="Book Appointment" data-el="Κλείστε Ραντεβού">Κλείστε Ραντεβού</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-en="Our Services" data-el="Οι Υπηρεσίες μας">Οι Υπηρεσίες μας</h2>
+                <p data-en="Professional men's haircuts and grooming services" data-el="Επαγγελματικές υπηρεσίες κουράματος και περιποίησης">Επαγγελματικές υπηρεσίες κουράματος και περιποίησης</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-cut"></i>
+                    <h3 data-en="Classic Haircut" data-el="Κλασικό Κούρεμα">Κλασικό Κούρεμα</h3>
+                    <p data-en="Traditional men's haircut with scissors and clippers" data-el="Παραδοσιακό ανδρικό κούρεμα με ψαλίδι και μηχανή">Παραδοσιακό ανδρικό κούρεμα με ψαλίδι και μηχανή</p>
+                    <div class="service-price">€15</div>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-scissors"></i>
+                    <h3 data-en="Beard Trim" data-el="Κούρεμα Γενειάδας">Κούρεμα Γενειάδας</h3>
+                    <p data-en="Precise beard shaping and styling" data-el="Ακριβές σχηματισμός και στυλ γενειάδας">Ακριβές σχηματισμός και στυλ γενειάδας</p>
+                    <div class="service-price">€10</div>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-wine-glass-alt"></i>
+                    <h3 data-en="Premium Package" data-el="Προνομιακό Πακέτο">Προνομιακό Πακέτο</h3>
+                    <p data-en="Haircut, beard trim, hot towel treatment" data-el="Κούρεμα, κούρεμα γενειάδας, θεραπεία με ζεστές πετσέτες">Κούρεμα, κούρεμα γενειάδας, θεραπεία με ζεστές πετσέτες</p>
+                    <div class="service-price">€25</div>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-shower"></i>
+                    <h3 data-en="Hair Wash & Style" data-el="Πλύσιμο & Στυλ">Πλύσιμο & Στυλ</h3>
+                    <p data-en="Professional shampoo and styling" data-el="Επαγγελματικό πλύσιμο και στυλ">Επαγγελματικό πλύσιμο και στυλ</p>
+                    <div class="service-price">€8</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-en="Our Work" data-el="Το Έργο μας">Το Έργο μας</h2>
+                <p data-en="Check out some of our latest styles" data-el="Δείτε μερικά από τα τελευταία μας στυλ">Δείτε μερικά από τα τελευταία μας στυλ</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://scontent.fskg4-1.fna.fbcdn.net/v/t39.30808-6/482979189_955821440083008_353638899160609412_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=127cfc&_nc_ohc=EroqssttEFkQ7kNvgHgSnrw&_nc_oc=Adm3N6X4fOOkclGUarL6wtQYvowFfVxF1On7vLRnpxudrzVO_Y9JtvSkp74O_4SWB3g&_nc_zt=23&_nc_ht=scontent.fskg4-1.fna&_nc_gid=PKL9LC0aIp8OtgTPpH0hWg&oh=00_AYERpCW85xR1XHY2jvYu2-02nj3r6DdtO1Q79g__lGKlFg&oe=67F42913" alt="Men's Haircut">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://scontent.fskg4-1.fna.fbcdn.net/v/t39.30808-6/480348870_939394711725681_5139464220341102349_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_ohc=6YJ3G76wG0EQ7kNvgHdqtHu&_nc_oc=AdmkRdV-mJiNayM7Okw5BQTYWFkreI_Gdryz7HUcK5zhNjb8azz7M1RiokbgWaPWnQE&_nc_zt=23&_nc_ht=scontent.fskg4-1.fna&_nc_gid=HGKvFZI4a0gGfxI-WchM7Q&oh=00_AYHOla9oU7mQtC5HPY56PXxcN1KVjvHkv0YHyPMpK5287w&oe=67F43654" alt="Styling">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://scontent.fskg4-1.fna.fbcdn.net/v/t39.30808-6/480265551_937900248541794_4772383657950063492_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=127cfc&_nc_ohc=dtgP8pEnuCQQ7kNvgHaQKJE&_nc_oc=AdkAcoAmdYud_i424_aOE-Orh1yDRGNbJVMxuQ0YXlhLRzLiDlQoaDErN3ffI15sMo4&_nc_zt=23&_nc_ht=scontent.fskg4-1.fna&_nc_gid=kvVbyF_IZb-WyVY6XIj-gw&oh=00_AYEKayU1twVb25O5Agzpkop7I5ymmXxFUOqzZP6jU_gfPg&oe=67F436EC" alt="Beard Trim">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://scontent.fskg4-1.fna.fbcdn.net/v/t39.30808-6/480169987_936892365309249_569245118176137401_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_ohc=bE_ZMFV0Ih4Q7kNvgHQP0pU&_nc_oc=AdnFRtqieKLEDl6NmB8ErQiB33ETfLagHPbsjTBfYWkz4uzGxu-leA7DJbMDh-DFAlw&_nc_zt=23&_nc_ht=scontent.fskg4-1.fna&_nc_gid=ynxOJP9YHfLFxSOSI9rjtg&oh=00_AYH0GjgPHBoQPjFRa0dSwRuItoO2Gp3zq7XC0CBcWtmjNA&oe=67F42814" alt="Classic Cut">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hours Section -->
+    <section id="hours" class="hours">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-en="Opening Hours" data-el="Ωράριο Λειτουργίας">Ωράριο Λειτουργίας</h2>
+                <p data-en="Find the perfect time to visit us" data-el="Βρείτε την κατάλληλη στιγμή να μας επισκεφτείτε">Βρείτε την κατάλληλη στιγμή να μας επισκεφτείτε</p>
+            </div>
+            <div class="hours-content">
+                <div class="hours-table">
+                    <table>
+                        <tr>
+                            <th data-en="Day" data-el="Ημέρα">Ημέρα</th>
+                            <th data-en="Hours" data-el="Ώρες">Ώρες</th>
+                        </tr>
+                        <tr>
+                            <td data-en="Monday" data-el="Δευτέρα">Δευτέρα</td>
+                            <td>08:30-14:00</td>
+                        </tr>
+                        <tr>
+                            <td data-en="Tuesday" data-el="Τρίτη">Τρίτη</td>
+                            <td>08:30-14:00 & 17:00-21:00</td>
+                        </tr>
+                        <tr>
+                            <td data-en="Wednesday" data-el="Τετάρτη">Τετάρτη</td>
+                            <td>08:30-14:00</td>
+                        </tr>
+                        <tr>
+                            <td data-en="Thursday" data-el="Πέμπτη">Πέμπτη</td>
+                            <td>08:30-14:00 & 17:00-21:00</td>
+                        </tr>
+                        <tr>
+                            <td data-en="Friday" data-el="Παρασκευή">Παρασκευή</td>
+                            <td>08:30-14:00 & 17:00-21:00</td>
+                        </tr>
+                        <tr>
+                            <td data-en="Saturday" data-el="Σάββατο">Σάββατο</td>
+                            <td>08:30-15:00</td>
+                        </tr>
+                        <tr>
+                            <td data-en="Sunday" data-el="Κυριακή">Κυριακή</td>
+                            <td data-en="Closed" data-el="Κλειστά">Κλειστά</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="hours-image">
+                    <img src="https://lh3.googleusercontent.com/gps-cs-s/AB5caB_PPiEzL8XC9TB0EqSFneS-0_uypLVbthy3dAWG6oqkojQRwnrXQNKFs0d3Ovxe296rupSmRkzRSsG69BmeTEeq4GgTddWH6Iv92ZrmDOVdSsehqabAaRjyh2AWwEBiFpz47uSUdQ=s937-k-no" alt="Shop Exterior">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-en="Contact Us" data-el="Επικοινωνία">Επικοινωνία</h2>
+                <p data-en="Get in touch for appointments and inquiries" data-el="Επικοινωνήστε μαζί μας για ραντεβού και ερωτήσεις">Επικοινωνήστε μαζί μας για ραντεβού και ερωτήσεις</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3 data-en="Contact Information" data-el="Στοιχεία Επικοινωνίας">Στοιχεία Επικοινωνίας</h3>
+                    <div class="contact-details">
+                        <p><i class="fas fa-phone"></i> <a href="tel:2421057655">2421057655</a></p>
+                        <p><i class="fas fa-envelope"></i> <a href="mailto:gentshair.ioannis@gmail.com">gentshair.ioannis@gmail.com</a></p>
+                    <p>
+                        <i class="fas fa-map-marker-alt"></i> 
+                        <span data-en="Kuprou 56a, Volos, 382 21" data-el="Κυπρου 56α, βολος, 382 21">Κυπρου 56α, βολος, 382 21</span>
+                    </p>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/gentshair.ioannis/" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/gentshair.ioannis" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3054.072030319341!2d22.94247031538505!3d39.36296107942596!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a84f8c1c1c1c1d%3A0x1a84f8c1c1c1c1d!2sKuprou%2056A%2C%20Volos%20383%2034%2C%20Greece!5e0!3m2!1sen!2sus!4v1621607512014!5m2!1sen!2sus" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Gents Hair by Ioannis Vasilikos. <span data-en="All rights reserved." data-el="Όλα τα δικαιώματα διατηρούνται.">Όλα τα δικαιώματα διατηρούνται.</span></p>
+            <a href="tel:2421057655" class="btn" data-en="Book Now" data-el="Κλείστε Τώρα">Κλείστε Τώρα</a>
+        </div>
+    </footer>
+
+<script>
+    // Mobile Navigation Toggle
+    const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+    const nav = document.querySelector('nav');
+    
+    mobileNavToggle.addEventListener('click', () => {
+        nav.classList.toggle('active');
+    });
+    
+    // Close mobile menu when clicking on links
+    const navLinks = document.querySelectorAll('nav ul li a');
+    
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            nav.classList.remove('active');
+        });
+    });
+    
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            if (!this.classList.contains('language-toggle')) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    const headerHeight = document.querySelector('header').offsetHeight;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+                    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+        });
+    });
+
+    // Language Toggle Functionality
+    const languageToggle = document.getElementById('languageToggle');
+    let currentLanguage = 'el'; // Default is Greek
+
+    // Function to toggle language
+    function toggleLanguage() {
+        currentLanguage = currentLanguage === 'el' ? 'en' : 'el';
+        updateLanguage();
+    }
+
+    // Function to update all elements with data attributes
+    function updateLanguage() {
+        // Update toggle button text
+        languageToggle.textContent = currentLanguage === 'el' ? 'EN' : 'EL';
+        
+        // Update html lang attribute
+        document.documentElement.lang = currentLanguage;
+        
+        // Update all elements with data attributes (except nav links)
+        document.querySelectorAll('[data-el], [data-en]').forEach(element => {
+            // Skip elements that are children of nav (we'll handle them separately)
+            if (element.closest('nav')) return;
+            
+            const text = currentLanguage === 'el' 
+                ? (element.getAttribute('data-el') || element.textContent)
+                : (element.getAttribute('data-en') || element.textContent);
+            
+            if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                element.placeholder = text;
+            } else {
+                element.textContent = text;
+            }
+        });
+        
+        // Update nav links separately
+        document.querySelectorAll('nav a').forEach(link => {
+            const text = currentLanguage === 'el' 
+                ? link.getAttribute('data-el')
+                : link.getAttribute('data-en');
+            if (text) {
+                link.textContent = text;
+            }
+        });
+    }
+
+    // Initialize language
+    updateLanguage();
+    
+    // Add event listener to toggle button
+    languageToggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        toggleLanguage();
+    });
+</script>
+</body>
+</html>
