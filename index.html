@@ -1,405 +1,220 @@
 <!DOCTYPE html>
 <html lang="el">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gents Hair by Ioannis Vasilikos</title>
-    <link rel="icon" href="https://scontent.fskg4-1.fna.fbcdn.net/v/t39.30808-6/299375773_369446075387217_6658963691959186152_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=QWMse66-nWUQ7kNvgESjo1r&_nc_oc=AdlDwmI9k8KpR_axFUMBKbwk4MxIdABOw1jwJvFGIqVvlM3xE5MCOCCQfwHPbdOPajQ&_nc_zt=23&_nc_ht=scontent.fskg4-1.fna&_nc_gid=DI3LVB26scISd_ndCaWr9Q&oh=00_AYGAeZCCsvgY0O5PE9QEvvFOvSHMIsjG1MHKOM2ROUCaDw&oe=67F42445" type="image/jpg">
+    <link rel="icon" href="logo.jpg" type="image/jpg">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     <style>
         :root {
             --primary-color: #222;
             --secondary-color: #b8860b;
+            /* Dark Goldenrod */
             --light-color: #f5f5f5;
+            /* White Smoke */
             --dark-color: #111;
+            --text-color: #333;
+            --light-text-color: #777;
+            --header-height: 100px;
+            /* Adjust based on final header size */
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: var(--header-height);
+            /* Offset for fixed header */
+        }
+
         body {
             background-color: var(--light-color);
-            color: var(--dark-color);
+            color: var(--text-color);
             line-height: 1.6;
+            overflow-x: hidden;
+            /* Prevent horizontal scroll */
         }
-        
-        header {
-            background-color: var(--dark-color);
-            color: white;
-            padding: 1rem 0;
-            position: fixed;
-            width: 100%;
-            z-index: 100;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-        
+
+        /* Header */
+        header {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            /* Makes background full width */
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            height: var(--header-height);
+            /* Give header explicit height */
+            display: flex;
+            align-items: center;
+        }
+
+        /* Container inside header aligns content with page content */
+        header .container {
+            width: 100%;
+            /* Allow container to manage max-width */
+        }
+
         .header-content {
             display: flex;
             justify-content: space-between;
+            /* Positions logo left, nav center, actions right */
             align-items: center;
+            width: 100%;
         }
-        
+
+        /* Assign flex properties if needed for specific sizing, e.g.: */
+        /* .logo { flex: 1; } */
+        /* nav { flex: 2; text-align: center; } */
+        /* .header-right-section { flex: 1; display: flex; justify-content: flex-end; } */
+        /* Using simple space-between often works well visually */
+
+
         .logo {
             display: flex;
             align-items: center;
+            text-decoration: none;
+            /* Remove underline from logo link */
+            color: white;
+            /* Ensure logo doesn't shrink too much */
+            flex-shrink: 0;
         }
-       
-        
+
         .logo img {
-            width: 80px;
-            height: 80px;
+            width: 70px;
+            /* Slightly smaller */
+            height: 70px;
             object-fit: cover;
             border-radius: 50%;
             margin-right: 15px;
-            border: 2px solid var(--secondary-color); /* Optional border */
+            /* Adjusted spacing */
+            border: 2px solid var(--secondary-color);
+            /* Optional border */
         }
-        
+
         .logo-text {
             display: flex;
             flex-direction: column;
+            justify-content: center;
         }
-        
+
         .logo-text-top {
-            font-size: 1rem;
-            font-weight: 500;
-            margin-bottom: 0px; /* Changed from 2px to 0px */
-            line-height: 1.2; /* Added this to reduce space */
+            font-size: 0.9rem;
+            /* Adjusted size */
+            font-weight: 300;
+            /* Lighter weight */
+            margin-bottom: 2px;
+            line-height: 1.1;
+            color: var(--light-color);
         }
-        
+
         .logo-text-bottom {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
+            /* Adjusted size */
             font-weight: bold;
+            line-height: 1.1;
         }
-        
+
+        /* Navigation */
+        nav {
+            /* Removed min-width, positioning handled by flexbox */
+            /* display: block; Ensure nav is visible on desktop */
+        }
+
         nav ul {
             display: flex;
             list-style: none;
+            /* Center the links within the nav container */
+            justify-content: center;
+            padding: 0;
+            /* Reset default padding */
         }
-        
+
         nav ul li {
-            min-width: 80px; /* Set a minimum width that accommodates both languages */
-            text-align: center; /* Center the text within the fixed width */
-            margin-left: 15px; /* Adjust spacing as needed */
+            margin: 0 10px;
+            /* Adjusted margin for centered items */
         }
-        
+
         nav ul li a {
             color: white;
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s;
+            padding: 5px 0;
+            position: relative;
+            transition: color 0.3s ease;
+            white-space: nowrap;
+            /* Prevent links wrapping */
         }
-        
-        nav ul li a:hover {
+
+        nav ul li a::after {
+            /* Underline effect on hover */
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--secondary-color);
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover,
+        nav ul li a.active {
+            /* Style for active link */
             color: var(--secondary-color);
         }
-        
-        .mobile-nav-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
+
+        nav ul li a:hover::after,
+        nav ul li a.active::after {
+            width: 100%;
         }
-        
+
+
+        /* Header Right Section (now just actions) */
+        .header-right-section {
+            display: flex;
+            align-items: center;
+            /* Ensure this group doesn't shrink */
+            flex-shrink: 0;
+        }
+
         .header-social {
             display: flex;
-            margin-left: 20px;
+            /* margin-left removed, spacing handled by parent flex */
         }
-        
+
         .header-social a {
             color: white;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
+            /* Slightly smaller */
             margin-left: 15px;
-            transition: color 0.3s;
+            transition: color 0.3s ease, transform 0.3s ease;
         }
-        
+
         .header-social a:hover {
             color: var(--secondary-color);
-        }
-        
-        .hero {
-            height: 100vh;
-            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            display: flex;
-            align-items: center;
-            text-align: center;
-        }
-        
-        .hero-content {
-            width: 100%;
-            padding: 0 20px;
-        }
-        
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        
-        .hero-logo {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            margin-bottom: 20px;
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-        }
-        
-        .btn {
-            display: inline-block;
-            background-color: var(--secondary-color);
-            color: white;
-            padding: 12px 30px;
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: bold;
-            transition: all 0.3s;
-        }
-        
-        .btn:hover {
-            background-color: #d4a017;
-            transform: translateY(-2px);
-        }
-        
-        section {
-            padding: 80px 0;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-            color: var(--dark-color);
-        }
-        
-        .section-title h2 {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-        }
-        
-        .section-title p {
-            color: #777;
-        }
-        
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
-            background-color: var(--secondary-color);
-            margin: 15px auto 0;
-        }
-        
-        .services {
-            background-color: #f9f9f9;
-        }
-        
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-        
-        .service-card {
-            background-color: white;
-            padding: 30px;
-            text-align: center;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: all 0.3s;
-        }
-        
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-        }
-        
-        .service-card i {
-            font-size: 2.5rem;
-            color: var(--secondary-color);
-            margin-bottom: 20px;
-        }
-        
-        .service-card h3 {
-            margin-bottom: 15px;
-        }
-        
-        .service-card p {
-            color: #777;
-        }
-        
-        .service-price {
-            font-weight: bold;
-            color: var(--secondary-color);
-            margin-top: 10px;
-            font-size: 1.2rem;
-        }
-        
-        .gallery {
-            background-color: white;
-        }
-        
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-        
-        .gallery-item {
-            overflow: hidden;
-            height: 250px;
-            border-radius: 10px;
-        }
-        
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-        
-        .gallery-item:hover img {
             transform: scale(1.1);
         }
-        
-        .hours {
-            background-color: var(--dark-color);
-            color: white;
-        }
-        
-        .hours-content {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 30px;
-        }
-        
-        .hours-table {
-            flex: 1;
-            min-width: 300px;
-        }
-        
-        .hours-table table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        
-        .hours-table table th, .hours-table table td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid #444;
-        }
-        
-        .hours-table table th {
-            font-weight: bold;
-            color: var(--secondary-color);
-        }
-        
-       .hours-image {
-           flex: 1;
-           min-width: 300px;
-           max-width: 450px;
-           height: 300px;
-           overflow: hidden;
-           border-radius: 10px;
-           display: flex;
-           align-items: center; /* Center vertically */
-           justify-content: center; /* Center horizontally */
-       }
-        
-        .hours-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .contact {
-            background-color: #f9f9f9;
-        }
-        
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .contact-info {
-            background-color: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-        
-        .contact-info h3 {
-            color: var(--dark-color);
-            margin-bottom: 20px;
-            font-size: 1.5rem;
-        }
-        
-        .contact-details p {
-            display: flex;
-            margin-bottom: 15px;
-            align-items: center;
-        }
-        
-        .contact-details i {
-            color: var(--secondary-color);
-            margin-right: 10px;
-            font-size: 1.2rem;
-            width: 20px;
-            text-align: center;
-        }
-        
-        .social-links {
-            margin-top: 20px;
-        }
-        
-        .social-links a {
-            display: inline-block;
-            margin-right: 15px;
-            color: var(--dark-color);
-            font-size: 1.5rem;
-            transition: color 0.3s;
-        }
-        
-        .social-links a:hover {
-            color: var(--secondary-color);
-        }
-        
-        .map-container {
-            height: 300px;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-        
-        footer {
-            background-color: var(--dark-color);
-            color: white;
-            padding: 30px 0;
-            text-align: center;
-        }
-        
-        footer p {
-            margin-bottom: 10px;
-        }
-        
+
         .language-toggle {
             background: var(--secondary-color);
             color: white;
@@ -407,159 +222,793 @@
             padding: 8px 15px;
             border-radius: 20px;
             cursor: pointer;
-            margin-left: 20px;
+            margin-left: 25px;
+            /* Space from social icons */
             font-weight: bold;
-            transition: all 0.3s;
+            transition: background-color 0.3s ease;
+            white-space: nowrap;
+            /* Prevent button text wrapping */
         }
-        
+
         .language-toggle:hover {
-            background: #d4a017;
+            background-color: #d4a017;
+            /* Slightly darker goldenrod */
         }
-        
-        @media (max-width: 768px) {
-        
-     .header-content {
-        display: flex;
-        flex-wrap: nowrap; /* Prevent wrapping */
-        align-items: center;
-    }
 
-    /* Logo - stays left */
-    .logo {
-        flex: 1; /* Takes available space */
-        min-width: 0; /* Allows shrinking */
-    }
+        .mobile-nav-toggle {
+            display: none;
+            /* Hidden by default on desktop */
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            /* Larger icon */
+            cursor: pointer;
+            padding: 5px;
+            margin-left: 15px;
+            /* Space before toggle */
+        }
 
-    /* Social icons - middle */
-    .header-social {
-        display: flex;
-        gap: 10px;
-        margin: 0 15px;
-    }
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('background6.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: var(--header-height);
+        }
 
-    /* Right-aligned elements container */
-    .header-right {
-        display: flex;
-        align-items: center;
-    }
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+        }
 
-    /* Language toggle */
-    .language-toggle {
-        margin-right: 10px;
-    }
+        .hero h1 {
+            font-size: 3.2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-    /* Mobile menu button - stays visible */
-    .mobile-nav-toggle {
-        display: block !important; /* Force show */
-        background: none;
-        border: none;
-        color: white;
-        font-size: 1.5rem;
-        cursor: pointer;
-        padding: 5px;
-    }
+        .hero-logo {
+            width: 180px;
+            height: 180px;
+            margin-bottom: 20px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--secondary-color);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
 
-    /* Navigation menu - hidden by default */
-    nav {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background-color: var(--dark-color);
-        padding: 20px;
-        z-index: 100;
-    }
 
-    nav.active {
-        display: block;
-    }
-            
-            nav ul {
-                flex-direction: column;
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 14px 35px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background-color: #d4a017;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* General Section Styling */
+        section {
+            padding: 100px 0;
+            overflow: hidden;
+        }
+
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            color: var(--dark-color);
+        }
+
+        .section-title h2 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .section-title p {
+            color: var(--light-text-color);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            margin: 20px auto 0;
+        }
+
+        /* Services Section */
+        .services {
+            background-color: #ffffff;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: var(--light-color);
+            padding: 40px 30px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-card i,
+        .service-card svg {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 25px;
+            height: 3rem;
+        }
+
+
+        .service-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+            color: var(--primary-color);
+        }
+
+        .service-card p {
+            color: var(--light-text-color);
+            font-size: 0.95rem;
+            min-height: 50px;
+        }
+
+        .service-price {
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin-top: 20px;
+            font-size: 1.3rem;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            background-color: var(--light-color);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            overflow: hidden;
+            height: 280px;
+            border-radius: 10px;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease, filter 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+            filter: brightness(1.1);
+        }
+
+/* Team Section */
+.team {
+     background-color: #ffffff;
+     padding-bottom: 100px; /* Ensure enough space below */
+ }
+
+ .team-grid {
+     display: grid;
+     grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); /* Keep this */
+     /* justify-content: center; */  /* Keep removed */
+     /* --- REDUCE HORIZONTAL GAP FURTHER --- */
+     column-gap: 10px;    /* Was 15px - Try 10px or even less (e.g., 8px) */
+     row-gap: 8px;        /* Keep this reduced vertical gap */
+ }
+
+ .team-member {
+     position: relative; /* Anchor for overlay elements */
+     border-radius: 8px; /* Slightly softer radius */
+     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Refined shadow */
+     transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1),
+                 box-shadow 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+     overflow: hidden; /* Essential */
+     margin: 0 auto;
+     background-color: var(--light-color); /* Fallback background */
+     cursor: pointer; /* Indicate interactivity */
+ }
+
+ .team-member:hover {
+     transform: translateY(-6px); /* Slightly less lift */
+     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12); /* Enhanced hover shadow */
+ }
+
+ .team-member img {
+     width: 100%;
+     /* --- INCREASED HEIGHT TO MATCH WIDTH --- */
+     height: 500px; /* Was 350px - adjust if needed */
+     object-fit: cover;
+     display: block;
+     transition: transform 0.45s cubic-bezier(0.25, 0.8, 0.25, 1),
+                 filter 0.45s ease-out;
+ }
+
+ .team-member:hover img {
+     /* --- Darken & Scale image on hover --- */
+     transform: scale(1.08);
+     filter: brightness(0.7);
+ }
+
+ /* --- Gradient Overlay Background (using pseudo-element) --- */
+ .team-member::after {
+     content: '';
+     position: absolute;
+     bottom: 0;
+     left: 0;
+     width: 100%;
+     height: 60%; /* Covers bottom 60% of the card */
+     background: linear-gradient(to top,
+             rgba(0, 0, 0, 0.9) 0%, /* Darker at the very bottom */
+             rgba(0, 0, 0, 0.7) 40%, /* Fades slightly */
+             rgba(0, 0, 0, 0) 100% /* Fully transparent at the top */
+         );
+     opacity: 0; /* Hidden by default */
+     transition: opacity 0.45s ease-out; /* Smooth fade-in */
+     pointer-events: none; /* Allows clicking through the gradient if needed */
+ }
+
+ .team-member:hover::after {
+     opacity: 1; /* Show gradient on hover */
+ }
+
+
+ /* --- Name (H3) Styling & Animation --- */
+ .team-member h3 {
+     position: absolute;
+     bottom: 0px; /* Position text near the bottom */
+     left: 0;
+     width: 100%;
+     color: white;
+     text-shadow: 1px 1px 3px rgba(0,0,0,0.4); /* Subtle text shadow for readability */
+     padding: 18px 20px; /* Adjust padding */
+     margin: 0;
+     text-align: center;
+     font-size: 1.2rem; /* Slightly larger font */
+     font-weight: 600; /* Bold weight */
+     box-sizing: border-box;
+     z-index: 2; /* Ensure text is above the gradient overlay */
+
+     /* --- Text Animation --- */
+     opacity: 0; /* Hidden by default */
+     transform: translateY(25px); /* Start further down */
+     /* Delayed transition for layered effect */
+     transition: opacity 0.35s ease-out 0.1s, /* Start fade-in 0.1s after hover */
+                 transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) 0.1s; /* Smooth slide, delayed */
+ }
+
+ /* --- Show Name (H3) on Hover --- */
+ .team-member:hover h3 {
+     opacity: 1; /* Show text */
+     transform: translateY(0); /* Slide text into final position */
+ }
+
+
+ /* --- Media Queries --- */
+ @media (max-width: 992px) {
+     .team-grid {
+         gap: 18px; /* Adjust gap for tablets */
+     }
+      .team-member img {
+        height: 320px;
+     }
+ }
+
+
+ @media (max-width: 768px) {
+     .team-grid {
+         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+         gap: 15px; /* Keep reduced gap */
+     }
+      .team-member img {
+        height: 300px;
+     }
+      .team-member h3 {
+        font-size: 1.1rem;
+        padding: 15px 15px;
+     }
+ }
+
+ @media (max-width: 480px) {
+     .team-grid {
+         grid-template-columns: 1fr;
+         max-width: 320px;
+         margin: 0 auto;
+     }
+      .team-member img {
+         height: 330px; /* Can adjust height for single column */
+     }
+ }
+
+        /* Hours Section */
+        .hours {
+            background-color: var(--dark-color);
+            color: white;
+        }
+
+        .hours .section-title h2,
+        .hours .section-title p {
+            color: white;
+        }
+
+        .hours .section-title::after {
+            background-color: var(--secondary-color);
+        }
+
+
+        .hours-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .hours-table {
+            flex: 1;
+            min-width: 320px;
+        }
+
+        .hours-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .hours-table table th,
+        .hours-table table td {
+            padding: 15px 12px;
+            text-align: left;
+            border-bottom: 1px solid #444;
+            font-size: 1rem;
+        }
+
+        .hours-table table th {
+            font-weight: bold;
+            color: var(--secondary-color);
+            width: 120px;
+        }
+
+        .hours-table table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .hours-table table td:last-child {
+            font-weight: 500;
+        }
+
+        .hours-image {
+            flex: 1;
+            min-width: 320px;
+            max-width: 500px;
+            height: 350px;
+            overflow: hidden;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .hours-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: var(--light-color);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            align-items: stretch;
+        }
+
+        .contact-info {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.07);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-info h3 {
+            color: var(--dark-color);
+            margin-bottom: 25px;
+            font-size: 1.6rem;
+            font-weight: 600;
+        }
+
+        .contact-details p {
+            display: flex;
+            margin-bottom: 20px;
+            align-items: center;
+            font-size: 1rem;
+            color: var(--text-color);
+        }
+
+        .contact-details p a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-details p a:hover {
+            color: var(--primary-color);
+        }
+
+
+        .contact-details i {
+            color: var(--secondary-color);
+            margin-right: 15px;
+            font-size: 1.3rem;
+            width: 25px;
+            text-align: center;
+        }
+
+        .social-links {
+            margin-top: auto;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin-right: 20px;
+            color: var(--dark-color);
+            font-size: 1.8rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-links a:last-child {
+            margin-right: 0;
+        }
+
+        .social-links a:hover {
+            color: var(--secondary-color);
+            transform: scale(1.1);
+        }
+
+        .map-container {
+            height: 100%;
+            min-height: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.07);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: #aaa;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        footer p {
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+
+        footer .btn {
+            margin-top: 10px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            :root {
+                --header-height: 90px;
             }
-            
-            nav ul li {
-                min-width: auto; /* Allow natural width on mobile */
-                text-align: left;
-                margin: 10px 0;
-            }
-            
+
             .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .section-title h2 {
                 font-size: 2.5rem;
             }
-            
-            .service-card, .gallery-item, .contact-info {
-                margin-bottom: 20px;
+
+            .hours-content {
+                flex-direction: column;
             }
-            
-            .logo-circle {
-                width: 60px;
-                height: 60px;
+
+            .hours-image {
+                height: 300px;
+                max-width: 100%;
             }
-            
-            .logo-circle::before {
-                width: 50px;
-                height: 50px;
+        }
+
+
+
+        @media (max-width: 768px) {
+            :root {
+                --header-height: 80px;
             }
-            
+
+            header {
+                padding: 0.8rem 0;
+            }
+
+            /* On mobile, nav is hidden by default, so the flex layout of header-content adjusts */
+            .header-content {
+                /* space-between still works: logo left, right-section right */
+            }
+
             .logo img {
-                width: 50px;
-                height: 50px;
+                width: 55px;
+                height: 55px;
+                margin-right: 10px;
             }
-            
-            .logo-text-bottom {
-                font-size: 1.4rem;
-            }
-            
-            .hero-logo {
-                width: 80px;
-                height: 80px;
-            }
-            
-            .language-toggle {
-                padding: 5px 10px;
+
+            .logo-text-top {
                 font-size: 0.8rem;
-                margin-left: 10px;
+            }
+
+            .logo-text-bottom {
+                font-size: 1.2rem;
+            }
+
+            /* Hide desktop nav, show toggle */
+            nav {
+                display: none;
+                /* Overrides desktop nav styles */
+                position: absolute;
+                /* Position the dropdown */
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: var(--dark-color);
+                padding: 15px 0;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+                border-top: 1px solid #333;
+                min-width: auto;
+                /* Already set, but good to be explicit */
+            }
+
+            nav.active {
+                display: block;
+                /* Show mobile nav when active */
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+                /* Vertical margin */
+                width: 100%;
+                text-align: center;
+            }
+
+            nav ul li a {
+                padding: 10px 20px;
+                display: block;
+            }
+
+            nav ul li a::after {
+                display: none;
+            }
+
+
+            .mobile-nav-toggle {
+                display: block;
+                /* Show hamburger menu */
+            }
+
+            /* Adjust spacing for smaller right section */
+            .header-right-section {
+                /* Ensure items fit */
+            }
+
+            .header-social {
+                /* Optionally hide social icons on very small screens if needed */
+                /* display: none; */
+                margin-left: 15px;
+                /* Restore some margin if needed */
+            }
+
+            .header-social a {
+                font-size: 1.3rem;
+                margin-left: 12px;
+            }
+
+            .language-toggle {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+                margin-left: 15px;
+            }
+
+            .hero {
+                background-attachment: scroll;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .hero-logo {
+                width: 150px;
+                height: 150px;
+            }
+
+            .btn {
+                padding: 12px 30px;
+                font-size: 0.9rem;
+            }
+
+            section {
+                padding: 80px 0;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .section-title p {
+                font-size: 1rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 15px;
+            }
+
+            .gallery-item {
+                height: 350px;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hours-table table th,
+            .hours-table table td {
+                padding: 12px 8px;
+                font-size: 0.9rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .map-container {
+                min-height: 300px;
+            }
+
+            .contact-info {
+                padding: 30px;
+            }
+
+            footer {
+                padding: 30px 0;
             }
         }
     </style>
-    <!-- Font Awesome CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
+
 <body>
-    <!-- Header -->
     <header>
         <div class="container">
             <div class="header-content">
-                <div class="logo">
-                    <div class="logo-circle">
-                        <img src="https://scontent.fskg4-1.fna.fbcdn.net/v/t39.30808-6/299375773_369446075387217_6658963691959186152_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=QWMse66-nWUQ7kNvgESjo1r&_nc_oc=AdlDwmI9k8KpR_axFUMBKbwk4MxIdABOw1jwJvFGIqVvlM3xE5MCOCCQfwHPbdOPajQ&_nc_zt=23&_nc_ht=scontent.fskg4-1.fna&_nc_gid=DI3LVB26scISd_ndCaWr9Q&oh=00_AYGAeZCCsvgY0O5PE9QEvvFOvSHMIsjG1MHKOM2ROUCaDw&oe=67F42445" alt="Gents Hair Logo">
-                    </div>
+                <a href="#home" class="logo">
+                    <img src="logo.jpg" alt="Gents Hair Logo">
                     <div class="logo-text">
-                        <span class="logo-text-top">Gents Hair by</span>
+                        <span class="logo-text-top" data-en="Gents Hair by" data-el="Gents Hair by">Gents Hair by</span>
                         <span class="logo-text-bottom">Ioannis Vasilikos</span>
                     </div>
-                </div>
-                <div style="display: flex; align-items: center;">
+                </a>
 
+                <nav>
+                    <ul>
+                        <li><a href="#home" data-en="Home" data-el="Αρχική">Αρχική</a></li>
+                        <li><a href="#services" data-en="Services" data-el="Υπηρεσίες">Υπηρεσίες</a></li>
+                        <li><a href="#gallery" data-en="Gallery" data-el="Gallery">Gallery</a></li>
+                        <li><a href="#team" data-en="Team" data-el="Ομάδα">Ομάδα</a></li>
+                        <li><a href="#hours" data-en="Hours" data-el="Ωράριο">Ωράριο</a></li>
+                        <li><a href="#contact" data-en="Contact" data-el="Επικοινωνία">Επικοινωνία</a></li>
+                    </ul>
+                </nav>
 
-                    <nav>
-                        <ul>
-                            <li><a href="#home" data-en="Home" data-el="Αρχική">Αρχική</a></li>
-                            <li><a href="#services" data-en="Services" data-el="Υπηρεσίες">Υπηρεσίες</a></li>
-                            <li><a href="#gallery" data-en="Gallery" data-el="Gallery">Gallery</a></li>
-                            <li><a href="#hours" data-en="Hours" data-el="Ωράριο">Ωράριο</a></li>
-                            <li><a href="#contact" data-en="Contact" data-el="Επικοινωνία">Επικοινωνία</a></li>
-                        </ul>
-                    </nav>
-                    
-                     <div class="header-social">
-                        <a href="https://www.facebook.com/gentshair.ioannis/" target="_blank"><i class="fab fa-facebook"></i></a>
-                        <a href="https://www.instagram.com/gentshair.ioannis" target="_blank"><i class="fab fa-instagram"></i></a>
+                <div class="header-right-section">
+                    <div class="header-social">
+                        <a href="https://www.facebook.com/gentshair.ioannis/" target="_blank" aria-label="Facebook"><i
+                                class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/gentshair.ioannis" target="_blank" aria-label="Instagram"><i
+                                class="fab fa-instagram"></i></a>
                     </div>
+
                     <button class="language-toggle" id="languageToggle">EN</button>
-                    <button class="mobile-nav-toggle">
+
+                    <button class="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
                         <i class="fas fa-bars"></i>
                     </button>
                 </div>
@@ -567,260 +1016,330 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1>
-                <span data-en="Gents Hair by Ioannis Vasilikos" data-el="Gents Hair by Ioannis Vasilikos">Gents Hair by Ioannis Vasilikos</span>
-            </h1>
-            <p data-en="Premium men's grooming and style in Volos" data-el="Εξαιρετική περιποίηση και στυλ για άνδρες στο Βόλο">Εξαιρετική περιποίηση και στυλ για άνδρες στο Βόλο</p>
-            <a href="tel:2421057655" class="btn" data-en="Book Appointment" data-el="Κλείστε Ραντεβού">Κλείστε Ραντεβού</a>
+            <h1>Gents Hair by Ioannis Vasilikos</h1>
+            <p data-en="Premium men's grooming and style in Volos"
+                data-el="Εξαιρετική περιποίηση και στυλ για άνδρες στο Βόλο">Εξαιρετική περιποίηση και στυλ για άνδρες
+                στο Βόλο</p>
+            <a href="tel:2421057655" class="btn" data-en="Book Appointment" data-el="Κλείστε Ραντεβού">Κλείστε
+                Ραντεβού</a>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="services">
+    <section id="services" class="services fade-in-section">
         <div class="container">
             <div class="section-title">
                 <h2 data-en="Our Services" data-el="Οι Υπηρεσίες μας">Οι Υπηρεσίες μας</h2>
-                <p data-en="Professional men's haircuts and grooming services" data-el="Επαγγελματικές υπηρεσίες κουράματος και περιποίησης">Επαγγελματικές υπηρεσίες κουράματος και περιποίησης</p>
+                <p data-en="Professional men's haircuts and grooming services"
+                    data-el="Επαγγελματικές υπηρεσίες κουρέματος και περιποίησης">Επαγγελματικές υπηρεσίες κουρέματος
+                    και περιποίησης</p>
             </div>
             <div class="services-grid">
                 <div class="service-card">
                     <i class="fas fa-cut"></i>
                     <h3 data-en="Classic Haircut" data-el="Κλασικό Κούρεμα">Κλασικό Κούρεμα</h3>
-                    <p data-en="Traditional men's haircut with scissors and clippers" data-el="Παραδοσιακό ανδρικό κούρεμα με ψαλίδι και μηχανή">Παραδοσιακό ανδρικό κούρεμα με ψαλίδι και μηχανή</p>
+                    <p data-en="Traditional men's haircut with scissors and clippers"
+                        data-el="Παραδοσιακό ανδρικό κούρεμα με ψαλίδι και μηχανή">Παραδοσιακό ανδρικό κούρεμα με ψαλίδι
+                        και μηχανή</p>
                     <div class="service-price"></div>
                 </div>
                 <div class="service-card">
-                    <i class="fas fa-scissors"></i>
-                    <h3 data-en="Beard Trim" data-el="Κούρεμα Γενειάδας">Κούρεμα Γενειάδας</h3>
-                    <p data-en="Precise beard shaping and styling" data-el="Ακριβές σχηματισμός και στυλ γενειάδας">Ακριβές σχηματισμός και στυλ γενειάδας</p>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 512 512"
+                        fill="var(--secondary-color)">
+                        <path
+                            d="M64 128c48-48 96-16 192 0c96-16 144-48 192 0c-48 24-144 48-192 24c-48 24-144 0-192-24z" />
+                        <path
+                            d="M64 128c-48 64-48 160 16 240c48 64 128 96 176 96c48 0 128-32 176-96c64-80 64-176 16-240 c-24 80-72 160-192 192c-120-32-168-112-192-192z" />
+                    </svg>
+                    <h3 data-en="Beard Care" data-el="Περιποίηση Γενειάδας">Περιποίηση Γενειάδας</h3>
+                    <p data-en="Precise beard shaping, trimming, and styling"
+                        data-el="Ακριβής σχηματισμός, κούρεμα και στυλ γενειάδας">Ακριβής σχηματισμός, κούρεμα και στυλ
+                        γενειάδας</p>
                     <div class="service-price"></div>
                 </div>
                 <div class="service-card">
-                    <i class="fas fa-wine-glass-alt"></i>
-                    <h3 data-en="Premium Package" data-el="Προνομιακό Πακέτο">Προνομιακό Πακέτο</h3>
-                    <p data-en="Haircut, beard trim, hot towel treatment" data-el="Κούρεμα, κούρεμα γενειάδας, θεραπεία με ζεστές πετσέτες">Κούρεμα, κούρεμα γενειάδας, θεραπεία με ζεστές πετσέτες</p>
-                    <div class="service-price"></div>
-                </div>
-                <div class="service-card">
-                    <i class="fas fa-shower"></i>
-                    <h3 data-en="Hair Wash & Style" data-el="Πλύσιμο & Στυλ">Πλύσιμο & Στυλ</h3>
-                    <p data-en="Professional shampoo and styling" data-el="Επαγγελματικό πλύσιμο και στυλ">Επαγγελματικό πλύσιμο και στυλ</p>
+                    <i class="fas fa-shop"></i>
+                    <h3 data-en="Styling products for sale" data-el="Προϊόντα styling προς πώληση">Προϊόντα styling προς
+                        πώληση</h3>
+                    <p data-en="Styling products for sale" data-el="Προϊόντα styling προς πώληση">Προϊόντα styling προς
+                        πώληση</p>
                     <div class="service-price"></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Gallery Section -->
-    <section id="gallery" class="gallery">
+    <section id="gallery" class="gallery fade-in-section">
         <div class="container">
             <div class="section-title">
-                <h2 data-en="Our Work" data-el="Το Έργο μας">Το Έργο μας</h2>
-                <p data-en="Check out some of our latest styles" data-el="Δείτε μερικά από τα τελευταία μας στυλ">Δείτε μερικά από τα τελευταία μας στυλ</p>
+                <h2 data-en="Our Work" data-el="Η Δουλειά μας">Η Δουλειά μας</h2>
+                <p data-en="Check out some of our latest styles" data-el="Δείτε μερικά από τα τελευταία μας στυλ">Δείτε
+                    μερικά από τα τελευταία μας στυλ</p>
             </div>
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="https://scontent.fskg4-1.fna.fbcdn.net/v/t39.30808-6/482979189_955821440083008_353638899160609412_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=127cfc&_nc_ohc=EroqssttEFkQ7kNvgHgSnrw&_nc_oc=Adm3N6X4fOOkclGUarL6wtQYvowFfVxF1On7vLRnpxudrzVO_Y9JtvSkp74O_4SWB3g&_nc_zt=23&_nc_ht=scontent.fskg4-1.fna&_nc_gid=PKL9LC0aIp8OtgTPpH0hWg&oh=00_AYERpCW85xR1XHY2jvYu2-02nj3r6DdtO1Q79g__lGKlFg&oe=67F42913" alt="Men's Haircut">
+                    <img src="gallery1.webp" alt="Men's Haircut Style 1">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://scontent.fskg4-1.fna.fbcdn.net/v/t39.30808-6/480348870_939394711725681_5139464220341102349_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_ohc=6YJ3G76wG0EQ7kNvgHdqtHu&_nc_oc=AdmkRdV-mJiNayM7Okw5BQTYWFkreI_Gdryz7HUcK5zhNjb8azz7M1RiokbgWaPWnQE&_nc_zt=23&_nc_ht=scontent.fskg4-1.fna&_nc_gid=HGKvFZI4a0gGfxI-WchM7Q&oh=00_AYHOla9oU7mQtC5HPY56PXxcN1KVjvHkv0YHyPMpK5287w&oe=67F43654" alt="Styling">
+                    <img src="gallery3.webp" alt="Men's Haircut Style 2">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://scontent.fskg4-1.fna.fbcdn.net/v/t39.30808-6/480265551_937900248541794_4772383657950063492_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=127cfc&_nc_ohc=dtgP8pEnuCQQ7kNvgHaQKJE&_nc_oc=AdkAcoAmdYud_i424_aOE-Orh1yDRGNbJVMxuQ0YXlhLRzLiDlQoaDErN3ffI15sMo4&_nc_zt=23&_nc_ht=scontent.fskg4-1.fna&_nc_gid=kvVbyF_IZb-WyVY6XIj-gw&oh=00_AYEKayU1twVb25O5Agzpkop7I5ymmXxFUOqzZP6jU_gfPg&oe=67F436EC" alt="Beard Trim">
+                    <img src="gallery2.webp" alt="Men's Haircut Style 3">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://scontent.fskg4-1.fna.fbcdn.net/v/t39.30808-6/480169987_936892365309249_569245118176137401_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_ohc=bE_ZMFV0Ih4Q7kNvgHQP0pU&_nc_oc=AdnFRtqieKLEDl6NmB8ErQiB33ETfLagHPbsjTBfYWkz4uzGxu-leA7DJbMDh-DFAlw&_nc_zt=23&_nc_ht=scontent.fskg4-1.fna&_nc_gid=ynxOJP9YHfLFxSOSI9rjtg&oh=00_AYH0GjgPHBoQPjFRa0dSwRuItoO2Gp3zq7XC0CBcWtmjNA&oe=67F42814" alt="Classic Cut">
+                    <img src="gallery4.webp" alt="Men's Haircut Style 4">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Hours Section -->
-    <section id="hours" class="hours">
+    <section id="team" class="team fade-in-section">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-en="Meet Our Team" data-el="Η Ομάδα μας">Η Ομάδα μας</h2>
+                <p data-en="The talented stylists behind your great look"
+                   data-el="Οι ταλαντούχοι στυλίστες πίσω από την εμφάνισή σας">Οι ταλαντούχοι στυλίστες πίσω από την εμφάνισή σας</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="team1.webp" alt="Ioannis Vasilikos">
+                    <h3 data-en="Ioannis Vasilikos" data-el="Ιωάννης Βασιλικός">Ιωάννης Βασιλικός</h3>
+                </div>
+                <div class="team-member">
+                    <img src="team2.webp" alt="Dimitris">
+                    <h3 data-en="Dimitris" data-el="Δημήτρης">Δημήτρης</h3>
+                </div>
+                </div>
+        </div>
+    </section>
+
+    <section id="hours" class="hours fade-in-section">
         <div class="container">
             <div class="section-title">
                 <h2 data-en="Opening Hours" data-el="Ωράριο Λειτουργίας">Ωράριο Λειτουργίας</h2>
-                <p data-en="Find the perfect time to visit us" data-el="Βρείτε την κατάλληλη στιγμή να μας επισκεφτείτε">Βρείτε την κατάλληλη στιγμή να μας επισκεφτείτε</p>
+                <p data-en="Find the perfect time to visit us"
+                    data-el="Βρείτε την κατάλληλη στιγμή να μας επισκεφτείτε">Βρείτε την κατάλληλη στιγμή να μας
+                    επισκεφτείτε</p>
             </div>
             <div class="hours-content">
                 <div class="hours-table">
                     <table>
-                        <tr>
-                            <th data-en="Day" data-el="Ημέρα">Ημέρα</th>
-                            <th data-en="Hours" data-el="Ώρες">Ώρες</th>
-                        </tr>
-                        <tr>
-                            <td data-en="Monday" data-el="Δευτέρα">Δευτέρα</td>
-                            <td>08:30-14:00</td>
-                        </tr>
-                        <tr>
-                            <td data-en="Tuesday" data-el="Τρίτη">Τρίτη</td>
-                            <td>08:30-14:00 & 17:00-21:00</td>
-                        </tr>
-                        <tr>
-                            <td data-en="Wednesday" data-el="Τετάρτη">Τετάρτη</td>
-                            <td>08:30-14:00</td>
-                        </tr>
-                        <tr>
-                            <td data-en="Thursday" data-el="Πέμπτη">Πέμπτη</td>
-                            <td>08:30-14:00 & 17:00-21:00</td>
-                        </tr>
-                        <tr>
-                            <td data-en="Friday" data-el="Παρασκευή">Παρασκευή</td>
-                            <td>08:30-14:00 & 17:00-21:00</td>
-                        </tr>
-                        <tr>
-                            <td data-en="Saturday" data-el="Σάββατο">Σάββατο</td>
-                            <td>08:30-15:00</td>
-                        </tr>
-                        <tr>
-                            <td data-en="Sunday" data-el="Κυριακή">Κυριακή</td>
-                            <td data-en="Closed" data-el="Κλειστά">Κλειστά</td>
-                        </tr>
+                        <thead>
+                            <tr>
+                                <th data-en="Day" data-el="Ημέρα">Ημέρα</th>
+                                <th data-en="Hours" data-el="Ώρες">Ώρες</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td data-en="Monday" data-el="Δευτέρα">Δευτέρα</td>
+                                <td>08:30 - 14:00</td>
+                            </tr>
+                            <tr>
+                                <td data-en="Tuesday" data-el="Τρίτη">Τρίτη</td>
+                                <td>08:30 - 14:00<br>17:00 - 21:00</td>
+                            </tr>
+                            <tr>
+                                <td data-en="Wednesday" data-el="Τετάρτη">Τετάρτη</td>
+                                <td>08:30 - 14:00</td>
+                            </tr>
+                            <tr>
+                                <td data-en="Thursday" data-el="Πέμπτη">Πέμπτη</td>
+                                <td>08:30 - 14:00<br>17:00 - 21:00</td>
+                            </tr>
+                            <tr>
+                                <td data-en="Friday" data-el="Παρασκευή">Παρασκευή</td>
+                                <td>08:30 - 14:00<br>17:00 - 21:00</td>
+                            </tr>
+                            <tr>
+                                <td data-en="Saturday" data-el="Σάββατο">Σάββατο</td>
+                                <td>08:30 - 15:00</td>
+                            </tr>
+                            <tr>
+                                <td data-en="Sunday" data-el="Κυριακή">Κυριακή</td>
+                                <td data-en="Closed" data-el="Κλειστά">Κλειστά</td>
+                            </tr>
+                        </tbody>
                     </table>
                 </div>
                 <div class="hours-image">
-                    <img src="https://lh3.googleusercontent.com/gps-cs-s/AB5caB_PPiEzL8XC9TB0EqSFneS-0_uypLVbthy3dAWG6oqkojQRwnrXQNKFs0d3Ovxe296rupSmRkzRSsG69BmeTEeq4GgTddWH6Iv92ZrmDOVdSsehqabAaRjyh2AWwEBiFpz47uSUdQ=s937-k-no" alt="Shop Exterior">
+                    <img src="exterior.jpg" alt="Gents Hair Barbershop Interior/Exterior">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
+    <section id="contact" class="contact fade-in-section">
         <div class="container">
             <div class="section-title">
                 <h2 data-en="Contact Us" data-el="Επικοινωνία">Επικοινωνία</h2>
-                <p data-en="Get in touch for appointments and inquiries" data-el="Επικοινωνήστε μαζί μας για ραντεβού και ερωτήσεις">Επικοινωνήστε μαζί μας για ραντεβού και ερωτήσεις</p>
+                <p data-en="Get in touch for appointments and inquiries"
+                    data-el="Επικοινωνήστε μαζί μας για ραντεβού και ερωτήσεις">Επικοινωνήστε μαζί μας για ραντεβού και
+                    ερωτήσεις</p>
             </div>
             <div class="contact-grid">
                 <div class="contact-info">
                     <h3 data-en="Contact Information" data-el="Στοιχεία Επικοινωνίας">Στοιχεία Επικοινωνίας</h3>
                     <div class="contact-details">
-                        <p><i class="fas fa-phone"></i> <a href="tel:2421057655">2421057655</a></p>
-                        <p><i class="fas fa-envelope"></i> <a href="mailto:gentshair.ioannis@gmail.com">gentshair.ioannis@gmail.com</a></p>
-                    <p>
-                        <i class="fas fa-map-marker-alt"></i> 
-                        <span data-en="Kuprou 56a, Volos, 382 21" data-el="Κυπρου 56α, βολος, 382 21">Κυπρου 56α, βολος, 382 21</span>
-                    </p>
+                        <p><i class="fas fa-phone"></i> <a href="tel:2421057655">2421 057655</a></p>
+                        <p><i class="fas fa-envelope"></i> <a
+                                href="mailto:gentshair.ioannis@gmail.com">gentshair.ioannis@gmail.com</a></p>
+                        <p>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span data-en="Kyprou 56a, Volos, 382 21" data-el="Κύπρου 56α, Βόλος, 382 21">Κύπρου 56α,
+                                Βόλος, 382 21</span>
+                        </p>
                     </div>
                     <div class="social-links">
-                        <a href="https://www.facebook.com/gentshair.ioannis/" target="_blank"><i class="fab fa-facebook"></i></a>
-                        <a href="https://www.instagram.com/gentshair.ioannis" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/gentshair.ioannis/" target="_blank" aria-label="Facebook"><i
+                                class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/gentshair.ioannis" target="_blank" aria-label="Instagram"><i
+                                class="fab fa-instagram"></i></a>
                     </div>
                 </div>
                 <div class="map-container">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3054.072030319341!2d22.94247031538505!3d39.36296107942596!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a84f8c1c1c1c1d%3A0x1a84f8c1c1c1c1d!2sKuprou%2056A%2C%20Volos%20383%2034%2C%20Greece!5e0!3m2!1sen!2sus!4v1621607512014!5m2!1sen!2sus" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1155.3805091342465!2d22.95747697137982!3d39.367652788704945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a76cf485f92db7%3A0xec23c1fc7e3994bf!2sGents%20hair%20by%20Ioannis%20Vasilikos!5e0!3m2!1sen!2sgr!4v1744024719327!5m2!1sen!2sgr"
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2025 Gents Hair by Ioannis Vasilikos. <span data-en="All rights reserved." data-el="Όλα τα δικαιώματα διατηρούνται.">Όλα τα δικαιώματα διατηρούνται.</span></p>
-            <a href="tel:2421057655" class="btn" data-en="Book Now" data-el="Κλείστε Τώρα">Κλείστε Τώρα</a>
+            <p>© <span id="copyright-year"></span> Gents Hair by Ioannis Vasilikos. <span data-en="All rights reserved."
+                    data-el="Με επιφύλαξη παντός δικαιώματος.">Με επιφύλαξη παντός δικαιώματος.</span></p> <a
+                href="tel:2421057655" class="btn" data-en="Book Now" data-el="Κλείστε Τώρα">Κλείστε Τώρα</a>
         </div>
     </footer>
 
-<script>
-    // Mobile Navigation Toggle
-    const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
-    const nav = document.querySelector('nav');
-    
-    mobileNavToggle.addEventListener('click', () => {
-        nav.classList.toggle('active');
-    });
-    
-    // Close mobile menu when clicking on links
-    const navLinks = document.querySelectorAll('nav ul li a');
-    
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            nav.classList.remove('active');
-        });
-    });
-    
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            if (!this.classList.contains('language-toggle')) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    const headerHeight = document.querySelector('header').offsetHeight;
-                    const elementPosition = targetElement.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
-                    
-                    window.scrollTo({
-                        top: offsetPosition,
-                        behavior: 'smooth'
-                    });
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- Mobile Navigation ---
+            const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+            // Select the nav element that is now a direct child of header-content
+            const nav = document.querySelector('.header-content > nav');
+            // Select links within that nav element
+            const navLinks = nav.querySelectorAll('ul li a');
+
+            mobileNavToggle.addEventListener('click', () => {
+                const isExpanded = nav.classList.toggle('active');
+                mobileNavToggle.setAttribute('aria-expanded', isExpanded);
+                const icon = mobileNavToggle.querySelector('i');
+                if (isExpanded) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                    // Need to make nav visible if it's controlled by display none/block
+                    nav.style.display = 'block'; // Or ensure .active class handles display
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                    nav.style.display = ''; // Revert to CSS default (which should be 'none' at mobile sizes)
                 }
+            });
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (nav.classList.contains('active')) {
+                        nav.classList.remove('active');
+                        mobileNavToggle.setAttribute('aria-expanded', 'false');
+                        mobileNavToggle.querySelector('i').classList.remove('fa-times');
+                        mobileNavToggle.querySelector('i').classList.add('fa-bars');
+                        nav.style.display = ''; // Hide nav again
+                    }
+                });
+            });
+
+            // --- Language Toggle ---
+            const languageToggle = document.getElementById('languageToggle');
+            const elementsToTranslate = document.querySelectorAll('[data-en]');
+            let currentLanguage = 'el';
+
+            function setLanguage(lang) {
+                elementsToTranslate.forEach(el => {
+                    el.textContent = el.getAttribute(`data-${lang}`);
+                });
+                languageToggle.textContent = lang === 'el' ? 'EN' : 'EL';
+                document.documentElement.lang = lang;
+                currentLanguage = lang;
             }
-        });
-    });
 
-    // Language Toggle Functionality
-    const languageToggle = document.getElementById('languageToggle');
-    let currentLanguage = 'el'; // Default is Greek
+            languageToggle.addEventListener('click', () => {
+                setLanguage(currentLanguage === 'el' ? 'en' : 'el');
+            });
 
-    // Function to toggle language
-    function toggleLanguage() {
-        currentLanguage = currentLanguage === 'el' ? 'en' : 'el';
-        updateLanguage();
-    }
+            setLanguage(currentLanguage);
 
-    // Function to update all elements with data attributes
-    function updateLanguage() {
-        // Update toggle button text
-        languageToggle.textContent = currentLanguage === 'el' ? 'EN' : 'EL';
-        
-        // Update html lang attribute
-        document.documentElement.lang = currentLanguage;
-        
-        // Update all elements with data attributes (except nav links)
-        document.querySelectorAll('[data-el], [data-en]').forEach(element => {
-            // Skip elements that are children of nav (we'll handle them separately)
-            if (element.closest('nav')) return;
-            
-            const text = currentLanguage === 'el' 
-                ? (element.getAttribute('data-el') || element.textContent)
-                : (element.getAttribute('data-en') || element.textContent);
-            
-            if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-                element.placeholder = text;
-            } else {
-                element.textContent = text;
+            // --- Scrollspy for Navigation ---
+            const sections = document.querySelectorAll('section[id]');
+            const headerHeight = document.querySelector('header').offsetHeight;
+            // Make sure navLinks for scrollspy includes the moved nav items
+            const scrollSpyNavLinks = document.querySelectorAll('.header-content > nav ul li a');
+
+            function activateNavLink() {
+                let currentSectionId = '';
+                const scrollPosition = window.scrollY;
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - headerHeight - 50;
+                    const sectionBottom = sectionTop + section.offsetHeight;
+
+                    if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                        currentSectionId = section.getAttribute('id');
+                    }
+                });
+
+                if ((window.innerHeight + scrollPosition) >= document.body.offsetHeight - 50) {
+                    const lastSection = sections[sections.length - 1];
+                    if (lastSection) {
+                        currentSectionId = lastSection.getAttribute('id');
+                    }
+                }
+                if (scrollPosition < sections[0].offsetTop - headerHeight - 50) {
+                    currentSectionId = sections[0].getAttribute('id');
+                }
+
+                scrollSpyNavLinks.forEach(link => { // Use the correct navLinks variable
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${currentSectionId}`) {
+                        link.classList.add('active');
+                    }
+                });
             }
-        });
-        
-        // Update nav links separately
-        document.querySelectorAll('nav a').forEach(link => {
-            const text = currentLanguage === 'el' 
-                ? link.getAttribute('data-el')
-                : link.getAttribute('data-en');
-            if (text) {
-                link.textContent = text;
-            }
-        });
-    }
 
-    // Initialize language
-    updateLanguage();
-    
-    // Add event listener to toggle button
-    languageToggle.addEventListener('click', function(e) {
-        e.stopPropagation();
-        toggleLanguage();
-    });
-</script>
+            window.addEventListener('scroll', activateNavLink);
+            activateNavLink();
+
+
+            // --- Fade-in Animation on Scroll ---
+            const fadeInSections = document.querySelectorAll('.fade-in-section');
+
+            const sectionObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                rootMargin: '0px 0px -100px 0px'
+            });
+
+            fadeInSections.forEach(section => {
+                sectionObserver.observe(section);
+            });
+
+
+            // --- Copyright Year ---
+            document.getElementById('copyright-year').textContent = new Date().getFullYear();
+
+        });
+    </script>
+
 </body>
+
 </html>
