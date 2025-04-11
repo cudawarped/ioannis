@@ -4,10 +4,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gents Hair by Ioannis Vasilikos</title>
+    <title>Gents Hair by Ioannis Vasilikos | Men's Barbershop in Volos</title>
+
+    <meta name="description"
+        content="Premium men's haircuts, beard care, and styling at Gents Hair by Ioannis Vasilikos. Professional barber shop in Volos since 2002. Book an appointment today!">
+
+    <meta name="keywords"
+        content="barbershop, men's haircut, Volos, Ioannis Vasilikos, beard trimming, hair styling, barber, Greek barbershop, ανδρικό κούρεμα, κουρείο">
+
+    <link rel="canonical" href="https://gentshair.gr/">
+
+    <!-- Open Graph tags for better social media sharing -->
+    <meta property="og:title" content="Gents Hair by Ioannis Vasilikos | Men's Barbershop in Volos">
+    <meta property="og:description"
+        content="Premium men's haircuts, beard care, and styling in Volos since 2002. Book your appointment today!">
+    <meta property="og:image" content="https://gentshair.gr/logo.jpg">
+    <meta property="og:url" content="https://gentshair.gr/">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card data for Twitter sharing -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Gents Hair by Ioannis Vasilikos | Men's Barbershop">
+    <meta name="twitter:description" content="Premium men's haircuts, beard care, and styling in Volos since 2002.">
+    <meta name="twitter:image" content="https://gentshair.gr/logo.jpg">
+
+    <!-- Language alternates if you maintain both Greek & English versions -->
+    <!-- <link rel="alternate" hreflang="el" href="https://yourwebsite.com/el/">
+  <link rel="alternate" hreflang="en" href="https://yourwebsite.com/en/"> -->
+
+
     <link rel="icon" href="logo.jpg" type="image/jpg">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Additional meta tags -->
+    <meta name="author" content="Ioannis Vasilikos">
+    <meta name="robots" content="index, follow">
+    <meta name="geo.region" content="GR-24">
+    <meta name="geo.placename" content="Volos">
 
     <style>
         :root {
@@ -446,143 +480,184 @@
             filter: brightness(1.1);
         }
 
-/* Team Section */
-.team {
-     background-color: #ffffff;
-     padding-bottom: 100px; /* Ensure enough space below */
- }
+        /* Team Section */
+        .team {
+            background-color: #ffffff;
+            padding-bottom: 100px;
+            /* Ensure enough space below */
+        }
 
- .team-grid {
-     display: grid;
-     grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); /* Keep this */
-     /* justify-content: center; */  /* Keep removed */
-     /* --- REDUCE HORIZONTAL GAP FURTHER --- */
-     column-gap: 10px;    /* Was 15px - Try 10px or even less (e.g., 8px) */
-     row-gap: 8px;        /* Keep this reduced vertical gap */
- }
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+            /* Keep this */
+            /* justify-content: center; */
+            /* Keep removed */
+            /* --- REDUCE HORIZONTAL GAP FURTHER --- */
+            column-gap: 10px;
+            /* Was 15px - Try 10px or even less (e.g., 8px) */
+            row-gap: 8px;
+            /* Keep this reduced vertical gap */
+        }
 
- .team-member {
-     position: relative; /* Anchor for overlay elements */
-     border-radius: 8px; /* Slightly softer radius */
-     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Refined shadow */
-     transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1),
-                 box-shadow 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
-     overflow: hidden; /* Essential */
-     margin: 0 auto;
-     background-color: var(--light-color); /* Fallback background */
-     cursor: pointer; /* Indicate interactivity */
- }
+        .team-member {
+            position: relative;
+            /* Anchor for overlay elements */
+            border-radius: 8px;
+            /* Slightly softer radius */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            /* Refined shadow */
+            transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1),
+                box-shadow 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+            overflow: hidden;
+            /* Essential */
+            margin: 0 auto;
+            background-color: var(--light-color);
+            /* Fallback background */
+            cursor: pointer;
+            /* Indicate interactivity */
+        }
 
- .team-member:hover {
-     transform: translateY(-6px); /* Slightly less lift */
-     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12); /* Enhanced hover shadow */
- }
+        .team-member:hover {
+            transform: translateY(-6px);
+            /* Slightly less lift */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+            /* Enhanced hover shadow */
+        }
 
- .team-member img {
-     width: 100%;
-     /* --- INCREASED HEIGHT TO MATCH WIDTH --- */
-     height: 500px; /* Was 350px - adjust if needed */
-     object-fit: cover;
-     display: block;
-     transition: transform 0.45s cubic-bezier(0.25, 0.8, 0.25, 1),
-                 filter 0.45s ease-out;
- }
+        .team-member img {
+            width: 100%;
+            /* --- INCREASED HEIGHT TO MATCH WIDTH --- */
+            height: 500px;
+            /* Was 350px - adjust if needed */
+            object-fit: cover;
+            display: block;
+            transition: transform 0.45s cubic-bezier(0.25, 0.8, 0.25, 1),
+                filter 0.45s ease-out;
+        }
 
- .team-member:hover img {
-     /* --- Darken & Scale image on hover --- */
-     transform: scale(1.08);
-     filter: brightness(0.7);
- }
+        .team-member:hover img {
+            /* --- Darken & Scale image on hover --- */
+            transform: scale(1.08);
+            filter: brightness(0.7);
+        }
 
- /* --- Gradient Overlay Background (using pseudo-element) --- */
- .team-member::after {
-     content: '';
-     position: absolute;
-     bottom: 0;
-     left: 0;
-     width: 100%;
-     height: 60%; /* Covers bottom 60% of the card */
-     background: linear-gradient(to top,
-             rgba(0, 0, 0, 0.9) 0%, /* Darker at the very bottom */
-             rgba(0, 0, 0, 0.7) 40%, /* Fades slightly */
-             rgba(0, 0, 0, 0) 100% /* Fully transparent at the top */
-         );
-     opacity: 0; /* Hidden by default */
-     transition: opacity 0.45s ease-out; /* Smooth fade-in */
-     pointer-events: none; /* Allows clicking through the gradient if needed */
- }
+        /* --- Gradient Overlay Background (using pseudo-element) --- */
+        .team-member::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60%;
+            /* Covers bottom 60% of the card */
+            background: linear-gradient(to top,
+                    rgba(0, 0, 0, 0.9) 0%,
+                    /* Darker at the very bottom */
+                    rgba(0, 0, 0, 0.7) 40%,
+                    /* Fades slightly */
+                    rgba(0, 0, 0, 0) 100%
+                    /* Fully transparent at the top */
+                );
+            opacity: 0;
+            /* Hidden by default */
+            transition: opacity 0.45s ease-out;
+            /* Smooth fade-in */
+            pointer-events: none;
+            /* Allows clicking through the gradient if needed */
+        }
 
- .team-member:hover::after {
-     opacity: 1; /* Show gradient on hover */
- }
-
-
- /* --- Name (H3) Styling & Animation --- */
- .team-member h3 {
-     position: absolute;
-     bottom: 0px; /* Position text near the bottom */
-     left: 0;
-     width: 100%;
-     color: white;
-     text-shadow: 1px 1px 3px rgba(0,0,0,0.4); /* Subtle text shadow for readability */
-     padding: 18px 20px; /* Adjust padding */
-     margin: 0;
-     text-align: center;
-     font-size: 1.2rem; /* Slightly larger font */
-     font-weight: 600; /* Bold weight */
-     box-sizing: border-box;
-     z-index: 2; /* Ensure text is above the gradient overlay */
-
-     /* --- Text Animation --- */
-     opacity: 0; /* Hidden by default */
-     transform: translateY(25px); /* Start further down */
-     /* Delayed transition for layered effect */
-     transition: opacity 0.35s ease-out 0.1s, /* Start fade-in 0.1s after hover */
-                 transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) 0.1s; /* Smooth slide, delayed */
- }
-
- /* --- Show Name (H3) on Hover --- */
- .team-member:hover h3 {
-     opacity: 1; /* Show text */
-     transform: translateY(0); /* Slide text into final position */
- }
+        .team-member:hover::after {
+            opacity: 1;
+            /* Show gradient on hover */
+        }
 
 
- /* --- Media Queries --- */
- @media (max-width: 992px) {
-     .team-grid {
-         gap: 18px; /* Adjust gap for tablets */
-     }
-      .team-member img {
-        height: 320px;
-     }
- }
+        /* --- Name (H3) Styling & Animation --- */
+        .team-member h3 {
+            position: absolute;
+            bottom: 0px;
+            /* Position text near the bottom */
+            left: 0;
+            width: 100%;
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+            /* Subtle text shadow for readability */
+            padding: 18px 20px;
+            /* Adjust padding */
+            margin: 0;
+            text-align: center;
+            font-size: 1.2rem;
+            /* Slightly larger font */
+            font-weight: 600;
+            /* Bold weight */
+            box-sizing: border-box;
+            z-index: 2;
+            /* Ensure text is above the gradient overlay */
+
+            /* --- Text Animation --- */
+            opacity: 0;
+            /* Hidden by default */
+            transform: translateY(25px);
+            /* Start further down */
+            /* Delayed transition for layered effect */
+            transition: opacity 0.35s ease-out 0.1s,
+                /* Start fade-in 0.1s after hover */
+                transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) 0.1s;
+            /* Smooth slide, delayed */
+        }
+
+        /* --- Show Name (H3) on Hover --- */
+        .team-member:hover h3 {
+            opacity: 1;
+            /* Show text */
+            transform: translateY(0);
+            /* Slide text into final position */
+        }
 
 
- @media (max-width: 768px) {
-     .team-grid {
-         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-         gap: 15px; /* Keep reduced gap */
-     }
-      .team-member img {
-        height: 300px;
-     }
-      .team-member h3 {
-        font-size: 1.1rem;
-        padding: 15px 15px;
-     }
- }
+        /* --- Media Queries --- */
+        @media (max-width: 992px) {
+            .team-grid {
+                gap: 18px;
+                /* Adjust gap for tablets */
+            }
 
- @media (max-width: 480px) {
-     .team-grid {
-         grid-template-columns: 1fr;
-         max-width: 320px;
-         margin: 0 auto;
-     }
-      .team-member img {
-         height: 330px; /* Can adjust height for single column */
-     }
- }
+            .team-member img {
+                height: 320px;
+            }
+        }
+
+
+        @media (max-width: 768px) {
+            .team-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 15px;
+                /* Keep reduced gap */
+            }
+
+            .team-member img {
+                height: 300px;
+            }
+
+            .team-member h3 {
+                font-size: 1.1rem;
+                padding: 15px 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .team-grid {
+                grid-template-columns: 1fr;
+                max-width: 320px;
+                margin: 0 auto;
+            }
+
+            .team-member img {
+                height: 330px;
+                /* Can adjust height for single column */
+            }
+        }
 
         /* Hours Section */
         .hours {
@@ -980,7 +1055,8 @@
         <div class="container">
             <div class="header-content">
                 <a href="#home" class="logo">
-                    <img src="logo.jpg" alt="Gents Hair Logo">
+                    <img src="logo.jpg"
+                        alt="Gents Hair by Ioannis Vasilikos Barbershop Logo - Men's Hair Salon in Volos">
                     <div class="logo-text">
                         <span class="logo-text-top" data-en="Gents Hair by" data-el="Gents Hair by">Gents Hair by</span>
                         <span class="logo-text-bottom">Ioannis Vasilikos</span>
@@ -1020,9 +1096,9 @@
         <div class="hero-content">
             <h1>Gents Hair by Ioannis Vasilikos</h1>
             <p data-en="Premium men's grooming and style in Volos since 2002"
-            data-el="Εξαιρετική περιποίηση και στυλ για άνδρες στο Βόλο από το 2002">
-            Εξαιρετική περιποίηση και στυλ για άνδρες στο Βόλο από το 2002
-         </p>
+                data-el="Εξαιρετική περιποίηση και στυλ για άνδρες στο Βόλο από το 2002">
+                Εξαιρετική περιποίηση και στυλ για άνδρες στο Βόλο από το 2002
+            </p>
             <a href="tel:2421057655" class="btn" data-en="Book Appointment" data-el="Κλείστε Ραντεβού">Κλείστε
                 Ραντεβού</a>
         </div>
@@ -1037,15 +1113,15 @@
                     και περιποίησης</p>
             </div>
             <div class="services-grid">
-                <div class="service-card">
+                <article class="service-card">
                     <i class="fas fa-cut"></i>
                     <h3 data-en="Classic Haircut" data-el="Κλασικό Κούρεμα">Κλασικό Κούρεμα</h3>
                     <p data-en="Traditional men's haircut with scissors and clippers"
                         data-el="Παραδοσιακό ανδρικό κούρεμα με ψαλίδι και μηχανή">Παραδοσιακό ανδρικό κούρεμα με ψαλίδι
                         και μηχανή</p>
                     <div class="service-price"></div>
-                </div>
-                <div class="service-card">
+                </article>
+                <article class="service-card">
                     <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 512 512"
                         fill="var(--secondary-color)">
                         <path
@@ -1058,15 +1134,15 @@
                         data-el="Ακριβής σχηματισμός, κούρεμα και στυλ γενειάδας">Ακριβής σχηματισμός, κούρεμα και στυλ
                         γενειάδας</p>
                     <div class="service-price"></div>
-                </div>
-                <div class="service-card">
+                </article>
+                <article class="service-card">
                     <i class="fas fa-shop"></i>
                     <h3 data-en="Styling products for sale" data-el="Προϊόντα styling προς πώληση">Προϊόντα styling προς
                         πώληση</h3>
                     <p data-en="Styling products for sale" data-el="Προϊόντα styling προς πώληση">Προϊόντα styling προς
                         πώληση</p>
                     <div class="service-price"></div>
-                </div>
+                </article>
             </div>
         </div>
     </section>
@@ -1079,18 +1155,21 @@
                     μερικά από τα τελευταία μας στυλ</p>
             </div>
             <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="gallery1.webp" alt="Men's Haircut Style 1">
-                </div>
-                <div class="gallery-item">
-                    <img src="gallery3.webp" alt="Men's Haircut Style 2">
-                </div>
-                <div class="gallery-item">
-                    <img src="gallery2.webp" alt="Men's Haircut Style 3">
-                </div>
-                <div class="gallery-item">
-                    <img src="gallery4.webp" alt="Men's Haircut Style 4">
-                </div>
+                <figure class="gallery-item">
+                    <img src="gallery1.webp" loading="lazy" alt="Classic Haircut and Styling - Gents Hair by Ioannis">
+                </figure>
+                <figure class="gallery-item">
+                    <img src="gallery3.webp" loading="lazy"
+                        alt="Boy's Modern Fade Haircut - Gents Hair Barbershop Volos">
+                </figure>
+                <figure class="gallery-item">
+                    <img src="gallery2.webp" loading="lazy"
+                        alt="Boy's Modern Fade Haircut - Gents Hair Barbershop Volos">
+                </figure>
+                <figure class="gallery-item">
+                    <img src="gallery4.webp" loading="lazy"
+                        alt="Men's Modern Fade Haircut - Gents Hair Barbershop Volos">
+                </figure>
             </div>
         </div>
     </section>
@@ -1100,18 +1179,21 @@
             <div class="section-title">
                 <h2 data-en="Meet Our Team" data-el="Η Ομάδα μας">Η Ομάδα μας</h2>
                 <p data-en="The talented stylists behind your great look"
-                   data-el="Οι ταλαντούχοι στυλίστες πίσω από την εμφάνισή σας">Οι ταλαντούχοι στυλίστες πίσω από την εμφάνισή σας</p>
+                    data-el="Οι ταλαντούχοι στυλίστες πίσω από την εμφάνισή σας">Οι ταλαντούχοι στυλίστες πίσω από την
+                    εμφάνισή σας</p>
             </div>
             <div class="team-grid">
                 <div class="team-member">
-                    <img src="team1.webp" alt="Ioannis Vasilikos">
+                    <img src="team1.webp" loading="lazy"
+                        alt="Ioannis Vasilikos - Master Barber and Founder of Gents Hair Volos">
                     <h3 data-en="Ioannis Vasilikos" data-el="Ιωάννης Βασιλικός">Ιωάννης Βασιλικός</h3>
                 </div>
                 <div class="team-member">
-                    <img src="team2.webp" alt="Dimitris">
+                    <img src="team2.webp" loading="lazy"
+                        alt="Dimitris - Professional Barber at Gents Hair Men's Salon Volos">
                     <h3 data-en="Dimitris" data-el="Δημήτρης">Δημήτρης</h3>
                 </div>
-                </div>
+            </div>
         </div>
     </section>
 
@@ -1165,7 +1247,8 @@
                     </table>
                 </div>
                 <div class="hours-image">
-                    <img src="exterior.jpg" alt="Gents Hair Barbershop Interior/Exterior">
+                    <img src="exterior.jpg" loading="lazy"
+                        alt="Gents Hair Barbershop Storefront in Volos - Kyprou 56a Location">
                 </div>
             </div>
         </div>
@@ -1213,8 +1296,8 @@
         <div class="container">
             <p>© <span id="copyright-year"></span> Gents Hair by Ioannis Vasilikos<span data-en=" | All rights reserved"
                     data-el=" | Με επιφύλαξη παντός δικαιώματος"> | Με επιφύλαξη παντός δικαιώματος</span>
-                    <span data-en=" | Established 2002" data-el=" | Έτος ίδρυσης 2002"> | Έτος ίδρυσης 2002</span></p> <a
-                href="tel:2421057655" class="btn" data-en="Book Now" data-el="Κλείστε Τώρα">Κλείστε Τώρα</a>
+                <span data-en=" | Established 2002" data-el=" | Έτος ίδρυσης 2002"> | Έτος ίδρυσης 2002</span>
+            </p> <a href="tel:2421057655" class="btn" data-en="Book Now" data-el="Κλείστε Τώρα">Κλείστε Τώρα</a>
         </div>
     </footer>
 
