@@ -33,7 +33,7 @@
   <link rel="alternate" hreflang="en" href="https://yourwebsite.com/en/"> -->
 
 
-    <link rel="icon" href="logo.webp" type="image/jpg">
+    <link rel="icon" href="favicon.png" type="image/png">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
@@ -1247,7 +1247,7 @@
                     </table>
                 </div>
                 <div class="hours-image">
-                    <img src="exterior.jpg" loading="lazy"
+                    <img src="exterior.webp" loading="lazy"
                         alt="Gents Hair Barbershop Storefront in Volos - Kyprou 56a Location">
                 </div>
             </div>
@@ -1303,6 +1303,28 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+
+         // --- Conditional CTA Button Link ---
+ const ctaButtons = document.querySelectorAll('.btn'); // Use the correct selector if needed
+ const mobileThreshold = 768; // Adjust this pixel value based on your CSS breakpoints
+ const phoneNumber = 'tel:+302421057655'; // Your actual phone number
+ const desktopLink = '#contact'; // Link to your contact section ID
+
+ function updateAllCtaButtonLinks() {
+            if (ctaButtons.length > 0) {
+                const isMobile = window.innerWidth < mobileThreshold;
+                ctaButtons.forEach(button => {
+                    if (isMobile) {
+                        button.href = phoneNumber;
+                    } else {
+                        button.href = desktopLink;
+                    }
+                });
+            }
+        }
+        updateAllCtaButtonLinks();
+        window.addEventListener('resize', updateAllCtaButtonLinks);
+        // --- End of Conditional CTA Button Link ---
 
             // --- Mobile Navigation ---
             const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
